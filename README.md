@@ -1,7 +1,5 @@
 # TE_IT_DAA_ASSIGNMENTS_SPPU
-## Savitribai Phule Pune University, Pune
-## Third Year Information Technology (2019 Course)
-## 314448 (A) : Laboratory Practice-I (Design and Analysis of Algorithm)
+## Savitribai Phule Pune University, Pune<br>Third Year Information Technology (2019 Course)<br>314448 (A) : Laboratory Practice-I (Design and Analysis of Algorithm)
 
 ## Assignment : 1
 Write a program to implement Fractional knapsack using Greedy algorithm and 0/1 knapsack using<br>
