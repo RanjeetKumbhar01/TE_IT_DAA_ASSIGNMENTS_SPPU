@@ -35,47 +35,71 @@ void print(int n)
     }
 }
 
-int place(int row, int col)
+int place(int row, int column)
 {
-    for (int i = 1; i <= row - 1; i++)
+
+    for (int i = 1; i <= row - 1; ++i)
     {
-        if (board[i] == col)
-        {
+        // checking column and digonal conflicts
+        if ((board[i] == column) || (abs(board[i] - column) == abs(i - row)))
             return 0;
-        }
-        else if (abs(board[i] - col) == abs(i - row))
-        {
-            return 0;
-        }
     }
-    return 1;
+
+    return 1; // no conflicts
 }
 
-void queen(int row, int n)
+void queen(int row, int n)//recursive backtracking algorithm
 {
-    for (int col = 1; col <= n; col++)
+
+    for (int column = 1; column <= n; ++column)
     {
-        if (place(row, col))
+        if (place(row, column))
         {
-            board[row] = col;
-            if (row == n)
-            {
-                print(n);
-            }
-            else
-            {
+            board[row] = column; // no conflicts so place queen
+            if (row == n)        // dead end
+                print(n);        // printing the board configuration
+            else                 // try queen with next position
                 queen(row + 1, n);
-            }
         }
     }
 }
+void r_queen(int row, int n)//iterative backtracking algorithm
+{
 
+    while (row != 0)
+    {
+        board[row]++;
+        if (board[row] <= n)
+        {
+            if (place(row, board[row]))
+            {
+                if (row == n)
+                {
+                    print(n);
+                }
+                else
+                {
+                    row++;
+                }
+            }
+        }
+        else
+        {
+            board[row] = 0;
+            row--;
+        }
+    }
+}
 int main()
 {
     int n, i, j;
+    void queen(int row, int n);//recursive backtracking algorithm
+    void r_queen(int row, int n);//iterative backtracking algorithm
     printf("Enter number of queens: ");
     scanf("%d", &n);
     queen(1, n);
+    // r_queen(1, n);
+    
     return 0;
 }
 
